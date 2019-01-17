@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<script type=text/javascript>
+  $(function() {
+    $('a#calculate').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+        a: $('input[name="a"]').val()        
+      }, function(data) {
+        $("#result").text(data.result);
+      });
+      return false;
+    });
+  });
+</script>
+<div>
+  <h1>Программа позволяет конвертировать числа из
+римских в арабские и наоборот.</h1>
+</div>
+<div>
+  <span>Программа позволяет конвертировать числа из
+римских в арабские и наоборот в диаразоне от 0 до 3999. Для конвертации введите римское или арабское число и нажмите конвертировать. В случае если число не римскре и не арабское вы получите сообщение о ошибке. Если вы укажите не существующее римское число, вы получите сообщение об ошибке. </span>
+</div>
+<br>
+<div>
+<input type=text size=20 name=a> 
+<span id=result>Сдесь отобразится результат</span>
+</div>
+<div><p><a href=# id=calculate type="button">Конвертировать число</a></div>
+
+{% endblock %}
